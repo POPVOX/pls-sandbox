@@ -1497,7 +1497,8 @@ How can I help you today? You can ask me questions or upload a legislative text 
     setIsChatLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/chat', {
+      const apiBase = import.meta.env.DEV ? 'http://localhost:3001' : '';
+      const response = await fetch(`${apiBase}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

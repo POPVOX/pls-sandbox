@@ -1,7 +1,8 @@
 // AI Service for legislation analysis
 // Calls the backend server which securely holds the API key
 
-const API_BASE_URL = 'http://localhost:3001';
+// Use relative URL in production, localhost in development
+const API_BASE_URL = import.meta.env.DEV ? 'http://localhost:3001' : '';
 
 /**
  * Check if the backend server is available and configured
