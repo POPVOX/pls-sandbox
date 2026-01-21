@@ -800,14 +800,16 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <div className="text-slate-300 text-sm whitespace-pre-line mb-4">
               {aiSuggestions.stakeholders.content}
             </div>
-            <div className="bg-slate-800 rounded-lg p-3">
-              <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Tips for {context.country || 'your context'}:</h5>
-              <ul className="text-slate-300 text-sm space-y-1">
-                {aiSuggestions.stakeholders.tips.map((tip, i) => (
-                  <li key={i}>• {tip}</li>
-                ))}
-              </ul>
-            </div>
+            {aiSuggestions.stakeholders.tips && aiSuggestions.stakeholders.tips.length > 0 && (
+              <div className="bg-slate-800 rounded-lg p-3">
+                <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Tips for {context.country || 'your context'}:</h5>
+                <ul className="text-slate-300 text-sm space-y-1">
+                  {aiSuggestions.stakeholders.tips.map((tip, i) => (
+                    <li key={i}>• {tip}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
 
@@ -997,14 +999,16 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <div className="text-slate-300 text-sm whitespace-pre-line mb-4">
               {aiSuggestions.consultation.content}
             </div>
-            <div className="bg-slate-800 rounded-lg p-3">
-              <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Key Reminders:</h5>
-              <ul className="text-slate-300 text-sm space-y-1">
-                {aiSuggestions.consultation.tips.map((tip, i) => (
-                  <li key={i}>• {tip}</li>
-                ))}
-              </ul>
-            </div>
+            {aiSuggestions.consultation.tips && aiSuggestions.consultation.tips.length > 0 && (
+              <div className="bg-slate-800 rounded-lg p-3">
+                <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Key Reminders:</h5>
+                <ul className="text-slate-300 text-sm space-y-1">
+                  {aiSuggestions.consultation.tips.map((tip, i) => (
+                    <li key={i}>• {tip}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
 
@@ -1136,14 +1140,16 @@ How can I help you today? You can ask me questions or upload a legislative text 
                 <div className="text-slate-300 text-sm whitespace-pre-line mb-4">
                   {aiSuggestions.monitoring.content}
                 </div>
-                <div className="bg-slate-800 rounded-lg p-3">
-                  <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Tips:</h5>
-                  <ul className="text-slate-300 text-sm space-y-1">
-                    {aiSuggestions.monitoring.tips.map((tip, i) => (
-                      <li key={i}>• {tip}</li>
-                    ))}
-                  </ul>
-                </div>
+                {aiSuggestions.monitoring.tips && aiSuggestions.monitoring.tips.length > 0 && (
+                  <div className="bg-slate-800 rounded-lg p-3">
+                    <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Tips:</h5>
+                    <ul className="text-slate-300 text-sm space-y-1">
+                      {aiSuggestions.monitoring.tips.map((tip, i) => (
+                        <li key={i}>• {tip}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -1384,14 +1390,16 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <div className="text-slate-300 text-sm whitespace-pre-line mb-4">
               {aiSuggestions.assessment.content}
             </div>
-            <div className="bg-slate-800 rounded-lg p-3">
-              <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Tips:</h5>
-              <ul className="text-slate-300 text-sm space-y-1">
-                {aiSuggestions.assessment.tips.map((tip, i) => (
-                  <li key={i}>• {tip}</li>
-                ))}
-              </ul>
-            </div>
+            {aiSuggestions.assessment.tips && aiSuggestions.assessment.tips.length > 0 && (
+              <div className="bg-slate-800 rounded-lg p-3">
+                <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Tips:</h5>
+                <ul className="text-slate-300 text-sm space-y-1">
+                  {aiSuggestions.assessment.tips.map((tip, i) => (
+                    <li key={i}>• {tip}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
 
