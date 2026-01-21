@@ -826,7 +826,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               value={newStakeholder.name}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, name: e.target.value })}
               placeholder="e.g., Ministry of Health, Patient Advocacy Group..."
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
           <div>
@@ -834,7 +834,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <select
               value={newStakeholder.type}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, type: e.target.value })}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             >
               <option value="">Select type...</option>
               {stakeholderTypes.map(type => (
@@ -847,7 +847,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <select
               value={newStakeholder.influence}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, influence: e.target.value })}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             >
               <option value="high">High - Can significantly shape outcomes</option>
               <option value="medium">Medium - Has moderate influence</option>
@@ -859,7 +859,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <select
               value={newStakeholder.interest}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, interest: e.target.value })}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             >
               <option value="high">High - Directly affected or deeply invested</option>
               <option value="medium">Medium - Moderately affected or interested</option>
@@ -874,7 +874,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             value={newStakeholder.notes}
             onChange={(e) => setNewStakeholder({ ...newStakeholder, notes: e.target.value })}
             placeholder="Brief note on why this stakeholder matters for PLS..."
-            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
           />
         </div>
         <button
@@ -1049,7 +1049,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setConsultation({ ...consultation, targetGroups: e.target.value.split('\n').filter(g => g.trim()) })}
               placeholder="List specific groups you want to hear from (one per line)&#10;e.g., Healthcare workers&#10;Rural communities&#10;Young people aged 18-25"
               rows={4}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
           <div>
@@ -1059,7 +1059,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setConsultation({ ...consultation, keyQuestions: e.target.value })}
               placeholder="What are the most important questions you want answered?&#10;&#10;e.g., Has the legislation achieved its stated objectives?&#10;What implementation challenges have you encountered?&#10;What unintended consequences have emerged?"
               rows={5}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
           <div className="grid md:grid-cols-2 gap-4">
@@ -1070,7 +1070,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
                 value={consultation.timeline}
                 onChange={(e) => setConsultation({ ...consultation, timeline: e.target.value })}
                 placeholder="e.g., 6-week consultation period, April-May 2026"
-                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               />
             </div>
             <div>
@@ -1080,7 +1080,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
                 value={consultation.accessibilityMeasures}
                 onChange={(e) => setConsultation({ ...consultation, accessibilityMeasures: e.target.value })}
                 placeholder="e.g., Plain language summary, multiple formats, translation"
-                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               />
             </div>
           </div>
@@ -1165,7 +1165,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               value={newSecondary}
               onChange={(e) => setNewSecondary(e.target.value)}
               placeholder="e.g., Implementation Regulations 2026, Code of Practice..."
-              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   addMonitoringItem('secondaryLegislation', newSecondary);
@@ -1219,7 +1219,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               value={newMilestone}
               onChange={(e) => setNewMilestone(e.target.value)}
               placeholder="e.g., Agency established, Staff trained, System launched..."
-              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   addMonitoringItem('implementationMilestones', newMilestone);
@@ -1273,7 +1273,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               value={newIndicator}
               onChange={(e) => setNewIndicator(e.target.value)}
               placeholder="e.g., Number of applications processed, Compliance rate..."
-              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   addMonitoringItem('dataIndicators', newIndicator);
@@ -1312,7 +1312,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             onChange={(e) => setMonitoring({ ...monitoring, reviewClauses: e.target.value })}
             placeholder="Does the legislation include any mandatory review dates, sunset clauses, or reporting requirements? List them here..."
             rows={3}
-            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
           />
         </div>
 
@@ -1415,7 +1415,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setAssessment({ ...assessment, intendedOutcomes: e.target.value })}
               placeholder="For each objective, assess:&#10;- Was it achieved? Partially? Not at all?&#10;- What evidence supports this assessment?&#10;- What factors contributed to success or failure?"
               rows={5}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
 
@@ -1431,7 +1431,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setAssessment({ ...assessment, unintendedConsequences: e.target.value })}
               placeholder="Document any:&#10;- Unexpected benefits&#10;- Unexpected harms or burdens&#10;- Loopholes or workarounds that emerged&#10;- Groups affected who weren't considered"
               rows={4}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
 
@@ -1478,7 +1478,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setAssessment({ ...assessment, recommendations: e.target.value })}
               placeholder="Consider:&#10;- Amendments to the primary legislation&#10;- Changes to secondary legislation/regulations&#10;- Improved implementation guidance&#10;- Additional resources needed&#10;- Repeal or sunset provisions"
               rows={5}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
 
@@ -1491,7 +1491,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setAssessment({ ...assessment, evidenceSources: e.target.value.split('\n').filter(s => s.trim()) })}
               placeholder="List sources that informed this assessment (one per line):&#10;e.g., Agency annual report 2025&#10;Audit office review&#10;Stakeholder consultation responses&#10;Academic study by [Author]"
               rows={4}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
         </div>
