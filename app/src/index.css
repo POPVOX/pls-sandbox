@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* WFD Theme Colors */
+:root {
+  --wfd-purple-dark: #1e1b4b;
+  --wfd-purple: #5f259f;
+  --wfd-purple-light: #7c3aed;
+  --wfd-orange: #f97316;
+  --wfd-orange-dark: #ea580c;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* WFD Card Styles */
+.wfd-card {
+  @apply bg-white rounded-lg border border-gray-200 shadow-sm p-6;
+}
+
+.wfd-card-header {
+  @apply text-lg font-semibold text-[#5f259f] mb-4 flex items-center gap-2;
+}
+
+/* WFD Form Inputs - Light Theme */
+.wfd-input {
+  @apply w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-[#5f259f] focus:ring-2 focus:ring-[#5f259f]/20 transition-all;
+}
+
+.wfd-select {
+  @apply w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:border-[#5f259f] focus:ring-2 focus:ring-[#5f259f]/20 transition-all;
+}
+
+.wfd-textarea {
+  @apply w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-[#5f259f] focus:ring-2 focus:ring-[#5f259f]/20 transition-all resize-none;
+}
+
+/* WFD Buttons */
+.wfd-btn-primary {
+  @apply bg-[#5f259f] hover:bg-[#4c1d7f] text-white px-6 py-3 rounded-lg font-medium transition-all;
+}
+
+.wfd-btn-secondary {
+  @apply bg-white border-2 border-[#5f259f] text-[#5f259f] hover:bg-[#5f259f]/5 px-6 py-3 rounded-lg font-medium transition-all;
+}
+
+.wfd-btn-orange {
+  @apply bg-[#f97316] hover:bg-[#ea580c] text-white px-6 py-3 rounded-lg font-medium transition-all;
+}
+
+/* WFD Section Headers */
+.wfd-section-title {
+  @apply text-xl font-semibold text-[#1e1b4b] border-b-2 border-[#5f259f] pb-2 mb-4;
+}
+
+/* Upload Zone */
+.wfd-upload-zone {
+  @apply border-2 border-dashed border-gray-300 rounded-xl p-8 text-center bg-gray-50 hover:border-[#5f259f] hover:bg-purple-50/30 transition-all cursor-pointer;
+}
+
+.wfd-upload-zone.active {
+  @apply border-[#5f259f] bg-purple-50/50;
+}
+
+/* Labels */
+.wfd-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+/* AI Badge */
+.wfd-ai-badge {
+  @apply text-xs bg-[#5f259f] text-white px-2 py-0.5 rounded-full;
+}
+
+/* Success/Warning/Error States */
+.wfd-success {
+  @apply bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg p-4;
+}
+
+.wfd-warning {
+  @apply bg-amber-50 border border-amber-200 text-amber-700 rounded-lg p-4;
+}
+
+.wfd-error {
+  @apply bg-red-50 border border-red-200 text-red-700 rounded-lg p-4;
+}
