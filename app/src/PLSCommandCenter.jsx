@@ -46,6 +46,11 @@ const PLSCommandCenter = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [exportReady, setExportReady] = useState(false);
 
+  // Monitoring tab input states (must be at top level, not in render function)
+  const [newSecondary, setNewSecondary] = useState('');
+  const [newMilestone, setNewMilestone] = useState('');
+  const [newIndicator, setNewIndicator] = useState('');
+
   // Document upload and AI extraction state
   const [uploadedFile, setUploadedFile] = useState(null);
   const [documentText, setDocumentText] = useState('');
@@ -821,7 +826,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               value={newStakeholder.name}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, name: e.target.value })}
               placeholder="e.g., Ministry of Health, Patient Advocacy Group..."
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
           <div>
@@ -829,7 +834,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <select
               value={newStakeholder.type}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, type: e.target.value })}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             >
               <option value="">Select type...</option>
               {stakeholderTypes.map(type => (
@@ -842,7 +847,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <select
               value={newStakeholder.influence}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, influence: e.target.value })}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             >
               <option value="high">High - Can significantly shape outcomes</option>
               <option value="medium">Medium - Has moderate influence</option>
@@ -854,7 +859,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             <select
               value={newStakeholder.interest}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, interest: e.target.value })}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             >
               <option value="high">High - Directly affected or deeply invested</option>
               <option value="medium">Medium - Moderately affected or interested</option>
@@ -869,7 +874,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
             value={newStakeholder.notes}
             onChange={(e) => setNewStakeholder({ ...newStakeholder, notes: e.target.value })}
             placeholder="Brief note on why this stakeholder matters for PLS..."
-            className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
           />
         </div>
         <button
@@ -1044,7 +1049,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setConsultation({ ...consultation, targetGroups: e.target.value.split('\n').filter(g => g.trim()) })}
               placeholder="List specific groups you want to hear from (one per line)&#10;e.g., Healthcare workers&#10;Rural communities&#10;Young people aged 18-25"
               rows={4}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
           <div>
@@ -1054,7 +1059,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setConsultation({ ...consultation, keyQuestions: e.target.value })}
               placeholder="What are the most important questions you want answered?&#10;&#10;e.g., Has the legislation achieved its stated objectives?&#10;What implementation challenges have you encountered?&#10;What unintended consequences have emerged?"
               rows={5}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
           <div className="grid md:grid-cols-2 gap-4">
@@ -1065,7 +1070,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
                 value={consultation.timeline}
                 onChange={(e) => setConsultation({ ...consultation, timeline: e.target.value })}
                 placeholder="e.g., 6-week consultation period, April-May 2026"
-                className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               />
             </div>
             <div>
@@ -1075,7 +1080,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
                 value={consultation.accessibilityMeasures}
                 onChange={(e) => setConsultation({ ...consultation, accessibilityMeasures: e.target.value })}
                 placeholder="e.g., Plain language summary, multiple formats, translation"
-                className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               />
             </div>
           </div>
@@ -1099,261 +1104,255 @@ How can I help you today? You can ask me questions or upload a legislative text 
     </div>
   );
 
-  const renderMonitoringTab = () => {
-    const [newSecondary, setNewSecondary] = useState('');
-    const [newMilestone, setNewMilestone] = useState('');
-    const [newIndicator, setNewIndicator] = useState('');
-
-    return (
-      <>
-        <div className="space-y-6">
-          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-xl font-semibold text-amber-400 flex items-center gap-2">
-                  <span>📊</span> Implementation Tracking
-                </h3>
-                <p className="text-slate-300 text-sm mt-1">
-                  Monitor how {context.legislationTitle || 'the legislation'} is being implemented.
-                </p>
-              </div>
-              <button
-                onClick={() => generateAISuggestions('monitoring')}
-                disabled={isGenerating}
-                className="bg-amber-600 hover:bg-amber-500 disabled:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2"
-              >
-                {isGenerating ? (
-                  <>
-                    <span className="animate-spin">⏳</span> Generating...
-                  </>
-                ) : (
-                  <>
-                    <span>✨</span> Get AI Suggestions
-                  </>
-                )}
-              </button>
+  const renderMonitoringTab = () => (
+    <>
+      <div className="space-y-6">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <h3 className="text-xl font-semibold text-amber-400 flex items-center gap-2">
+                <span>📊</span> Implementation Tracking
+              </h3>
+              <p className="text-slate-300 text-sm mt-1">
+                Monitor how {context.legislationTitle || 'the legislation'} is being implemented.
+              </p>
             </div>
+            <button
+              onClick={() => generateAISuggestions('monitoring')}
+              disabled={isGenerating}
+              className="bg-amber-600 hover:bg-amber-500 disabled:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2"
+            >
+              {isGenerating ? (
+                <>
+                  <span className="animate-spin">⏳</span> Generating...
+                </>
+              ) : (
+                <>
+                  <span>✨</span> Get AI Suggestions
+                </>
+              )}
+            </button>
+          </div>
 
-            {aiSuggestions.monitoring && (
-              <div className="bg-slate-900/50 rounded-lg p-4 mb-6 border border-amber-600/30">
-                <h4 className="text-amber-400 font-medium mb-2">{aiSuggestions.monitoring.title}</h4>
-                <div className="text-slate-300 text-sm whitespace-pre-line mb-4">
-                  {aiSuggestions.monitoring.content}
-                </div>
-                {aiSuggestions.monitoring.tips && aiSuggestions.monitoring.tips.length > 0 && (
-                  <div className="bg-slate-800 rounded-lg p-3">
-                    <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Tips:</h5>
-                    <ul className="text-slate-300 text-sm space-y-1">
-                      {aiSuggestions.monitoring.tips.map((tip, i) => (
-                        <li key={i}>• {tip}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+          {aiSuggestions.monitoring && (
+            <div className="bg-slate-900/50 rounded-lg p-4 mb-6 border border-amber-600/30">
+              <h4 className="text-amber-400 font-medium mb-2">{aiSuggestions.monitoring.title}</h4>
+              <div className="text-slate-300 text-sm whitespace-pre-line mb-4">
+                {aiSuggestions.monitoring.content}
               </div>
-            )}
-          </div>
-
-          {/* Secondary Legislation Tracker */}
-          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
-            <h4 className="text-white font-medium mb-3 flex items-center gap-2">
-              <span>📑</span> Secondary Legislation / Regulations Required
-            </h4>
-            <div className="flex gap-2 mb-4">
-              <input
-                type="text"
-                value={newSecondary}
-                onChange={(e) => setNewSecondary(e.target.value)}
-                placeholder="e.g., Implementation Regulations 2026, Code of Practice..."
-                className="flex-1 bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                    addMonitoringItem('secondaryLegislation', newSecondary);
-                    setNewSecondary('');
-                  }
-                }}
-              />
-              <button
-                onClick={() => {
-                  addMonitoringItem('secondaryLegislation', newSecondary);
-                  setNewSecondary('');
-                }}
-                className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-all"
-              >
-                Add
-              </button>
-            </div>
-            {monitoring.secondaryLegislation.length > 0 && (
-              <div className="space-y-2">
-                {monitoring.secondaryLegislation.map((item) => (
-                  <div key={item.id} className="flex items-center justify-between bg-slate-900 rounded-lg p-3">
-                    <span className="text-white">{item.text}</span>
-                    <select
-                      value={item.status}
-                      onChange={(e) => updateMonitoringStatus('secondaryLegislation', item.id, e.target.value)}
-                      className={`rounded px-3 py-1 text-sm font-medium ${item.status === 'completed' ? 'bg-emerald-600 text-white' :
-                        item.status === 'delayed' ? 'bg-red-600 text-white' :
-                          item.status === 'inprogress' ? 'bg-amber-600 text-white' :
-                            'bg-slate-700 text-slate-300'
-                        }`}
-                    >
-                      <option value="pending">Pending</option>
-                      <option value="inprogress">In Progress</option>
-                      <option value="completed">Completed</option>
-                      <option value="delayed">Delayed</option>
-                    </select>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Implementation Milestones */}
-          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
-            <h4 className="text-white font-medium mb-3 flex items-center gap-2">
-              <span>🎯</span> Implementation Milestones
-            </h4>
-            <div className="flex gap-2 mb-4">
-              <input
-                type="text"
-                value={newMilestone}
-                onChange={(e) => setNewMilestone(e.target.value)}
-                placeholder="e.g., Agency established, Staff trained, System launched..."
-                className="flex-1 bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                    addMonitoringItem('implementationMilestones', newMilestone);
-                    setNewMilestone('');
-                  }
-                }}
-              />
-              <button
-                onClick={() => {
-                  addMonitoringItem('implementationMilestones', newMilestone);
-                  setNewMilestone('');
-                }}
-                className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-all"
-              >
-                Add
-              </button>
-            </div>
-            {monitoring.implementationMilestones.length > 0 && (
-              <div className="space-y-2">
-                {monitoring.implementationMilestones.map((item) => (
-                  <div key={item.id} className="flex items-center justify-between bg-slate-900 rounded-lg p-3">
-                    <span className="text-white">{item.text}</span>
-                    <select
-                      value={item.status}
-                      onChange={(e) => updateMonitoringStatus('implementationMilestones', item.id, e.target.value)}
-                      className={`rounded px-3 py-1 text-sm font-medium ${item.status === 'completed' ? 'bg-emerald-600 text-white' :
-                        item.status === 'delayed' ? 'bg-red-600 text-white' :
-                          item.status === 'inprogress' ? 'bg-amber-600 text-white' :
-                            'bg-slate-700 text-slate-300'
-                        }`}
-                    >
-                      <option value="pending">Pending</option>
-                      <option value="inprogress">In Progress</option>
-                      <option value="completed">Completed</option>
-                      <option value="delayed">Delayed</option>
-                    </select>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Data Indicators */}
-          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
-            <h4 className="text-white font-medium mb-3 flex items-center gap-2">
-              <span>📈</span> Key Performance Indicators to Track
-            </h4>
-            <div className="flex gap-2 mb-4">
-              <input
-                type="text"
-                value={newIndicator}
-                onChange={(e) => setNewIndicator(e.target.value)}
-                placeholder="e.g., Number of applications processed, Compliance rate..."
-                className="flex-1 bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                    addMonitoringItem('dataIndicators', newIndicator);
-                    setNewIndicator('');
-                  }
-                }}
-              />
-              <button
-                onClick={() => {
-                  addMonitoringItem('dataIndicators', newIndicator);
-                  setNewIndicator('');
-                }}
-                className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-all"
-              >
-                Add
-              </button>
-            </div>
-            {monitoring.dataIndicators.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {monitoring.dataIndicators.map((item) => (
-                  <span key={item.id} className="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-sm">
-                    📊 {item.text}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Review Clauses */}
-          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
-            <h4 className="text-white font-medium mb-3 flex items-center gap-2">
-              <span>📅</span> Review Clauses / Sunset Provisions
-            </h4>
-            <textarea
-              value={monitoring.reviewClauses}
-              onChange={(e) => setMonitoring({ ...monitoring, reviewClauses: e.target.value })}
-              placeholder="Does the legislation include any mandatory review dates, sunset clauses, or reporting requirements? List them here..."
-              rows={3}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
-            />
-          </div>
-
-          {/* Summary Stats */}
-          {(monitoring.secondaryLegislation.length > 0 || monitoring.implementationMilestones.length > 0) && (
-            <div className="bg-gradient-to-r from-blue-900/50 to-indigo-900/50 rounded-xl p-6 border border-blue-700">
-              <h4 className="text-lg font-semibold text-blue-400 mb-3">📊 Implementation Status Overview</h4>
-              <div className="grid grid-cols-4 gap-4 text-center">
+              {aiSuggestions.monitoring.tips && aiSuggestions.monitoring.tips.length > 0 && (
                 <div className="bg-slate-800 rounded-lg p-3">
-                  <div className="text-2xl font-bold text-slate-300">
-                    {[...monitoring.secondaryLegislation, ...monitoring.implementationMilestones].filter(i => i.status === 'pending').length}
-                  </div>
-                  <div className="text-sm text-slate-400">Pending</div>
+                  <h5 className="text-emerald-400 text-sm font-medium mb-2">💡 Tips:</h5>
+                  <ul className="text-slate-300 text-sm space-y-1">
+                    {aiSuggestions.monitoring.tips.map((tip, i) => (
+                      <li key={i}>• {tip}</li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="bg-amber-900/30 rounded-lg p-3">
-                  <div className="text-2xl font-bold text-amber-400">
-                    {[...monitoring.secondaryLegislation, ...monitoring.implementationMilestones].filter(i => i.status === 'inprogress').length}
-                  </div>
-                  <div className="text-sm text-slate-400">In Progress</div>
-                </div>
-                <div className="bg-emerald-900/30 rounded-lg p-3">
-                  <div className="text-2xl font-bold text-emerald-400">
-                    {[...monitoring.secondaryLegislation, ...monitoring.implementationMilestones].filter(i => i.status === 'completed').length}
-                  </div>
-                  <div className="text-sm text-slate-400">Completed</div>
-                </div>
-                <div className="bg-red-900/30 rounded-lg p-3">
-                  <div className="text-2xl font-bold text-red-400">
-                    {[...monitoring.secondaryLegislation, ...monitoring.implementationMilestones].filter(i => i.status === 'delayed').length}
-                  </div>
-                  <div className="text-sm text-slate-400">Delayed</div>
-                </div>
-              </div>
+              )}
             </div>
           )}
         </div>
 
-        {renderNavButtons()}
-      </>
-    );
-  };
+        {/* Secondary Legislation Tracker */}
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
+          <h4 className="text-white font-medium mb-3 flex items-center gap-2">
+            <span>📑</span> Secondary Legislation / Regulations Required
+          </h4>
+          <div className="flex gap-2 mb-4">
+            <input
+              type="text"
+              value={newSecondary}
+              onChange={(e) => setNewSecondary(e.target.value)}
+              placeholder="e.g., Implementation Regulations 2026, Code of Practice..."
+              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  addMonitoringItem('secondaryLegislation', newSecondary);
+                  setNewSecondary('');
+                }
+              }}
+            />
+            <button
+              onClick={() => {
+                addMonitoringItem('secondaryLegislation', newSecondary);
+                setNewSecondary('');
+              }}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-all"
+            >
+              Add
+            </button>
+          </div>
+          {monitoring.secondaryLegislation.length > 0 && (
+            <div className="space-y-2">
+              {monitoring.secondaryLegislation.map((item) => (
+                <div key={item.id} className="flex items-center justify-between bg-slate-900 rounded-lg p-3">
+                  <span className="text-white">{item.text}</span>
+                  <select
+                    value={item.status}
+                    onChange={(e) => updateMonitoringStatus('secondaryLegislation', item.id, e.target.value)}
+                    className={`rounded px-3 py-1 text-sm font-medium ${item.status === 'completed' ? 'bg-emerald-600 text-white' :
+                      item.status === 'delayed' ? 'bg-red-600 text-white' :
+                        item.status === 'inprogress' ? 'bg-amber-600 text-white' :
+                          'bg-slate-700 text-slate-300'
+                      }`}
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="delayed">Delayed</option>
+                  </select>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Implementation Milestones */}
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
+          <h4 className="text-white font-medium mb-3 flex items-center gap-2">
+            <span>🎯</span> Implementation Milestones
+          </h4>
+          <div className="flex gap-2 mb-4">
+            <input
+              type="text"
+              value={newMilestone}
+              onChange={(e) => setNewMilestone(e.target.value)}
+              placeholder="e.g., Agency established, Staff trained, System launched..."
+              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  addMonitoringItem('implementationMilestones', newMilestone);
+                  setNewMilestone('');
+                }
+              }}
+            />
+            <button
+              onClick={() => {
+                addMonitoringItem('implementationMilestones', newMilestone);
+                setNewMilestone('');
+              }}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-all"
+            >
+              Add
+            </button>
+          </div>
+          {monitoring.implementationMilestones.length > 0 && (
+            <div className="space-y-2">
+              {monitoring.implementationMilestones.map((item) => (
+                <div key={item.id} className="flex items-center justify-between bg-slate-900 rounded-lg p-3">
+                  <span className="text-white">{item.text}</span>
+                  <select
+                    value={item.status}
+                    onChange={(e) => updateMonitoringStatus('implementationMilestones', item.id, e.target.value)}
+                    className={`rounded px-3 py-1 text-sm font-medium ${item.status === 'completed' ? 'bg-emerald-600 text-white' :
+                      item.status === 'delayed' ? 'bg-red-600 text-white' :
+                        item.status === 'inprogress' ? 'bg-amber-600 text-white' :
+                          'bg-slate-700 text-slate-300'
+                      }`}
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="delayed">Delayed</option>
+                  </select>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Data Indicators */}
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
+          <h4 className="text-white font-medium mb-3 flex items-center gap-2">
+            <span>📈</span> Key Performance Indicators to Track
+          </h4>
+          <div className="flex gap-2 mb-4">
+            <input
+              type="text"
+              value={newIndicator}
+              onChange={(e) => setNewIndicator(e.target.value)}
+              placeholder="e.g., Number of applications processed, Compliance rate..."
+              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  addMonitoringItem('dataIndicators', newIndicator);
+                  setNewIndicator('');
+                }
+              }}
+            />
+            <button
+              onClick={() => {
+                addMonitoringItem('dataIndicators', newIndicator);
+                setNewIndicator('');
+              }}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-all"
+            >
+              Add
+            </button>
+          </div>
+          {monitoring.dataIndicators.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {monitoring.dataIndicators.map((item) => (
+                <span key={item.id} className="bg-slate-900 text-slate-300 px-3 py-2 rounded-lg text-sm">
+                  📊 {item.text}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Review Clauses */}
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600">
+          <h4 className="text-white font-medium mb-3 flex items-center gap-2">
+            <span>📅</span> Review Clauses / Sunset Provisions
+          </h4>
+          <textarea
+            value={monitoring.reviewClauses}
+            onChange={(e) => setMonitoring({ ...monitoring, reviewClauses: e.target.value })}
+            placeholder="Does the legislation include any mandatory review dates, sunset clauses, or reporting requirements? List them here..."
+            rows={3}
+            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+          />
+        </div>
+
+        {/* Summary Stats */}
+        {(monitoring.secondaryLegislation.length > 0 || monitoring.implementationMilestones.length > 0) && (
+          <div className="bg-gradient-to-r from-blue-900/50 to-indigo-900/50 rounded-xl p-6 border border-blue-700">
+            <h4 className="text-lg font-semibold text-blue-400 mb-3">📊 Implementation Status Overview</h4>
+            <div className="grid grid-cols-4 gap-4 text-center">
+              <div className="bg-slate-800 rounded-lg p-3">
+                <div className="text-2xl font-bold text-slate-300">
+                  {[...monitoring.secondaryLegislation, ...monitoring.implementationMilestones].filter(i => i.status === 'pending').length}
+                </div>
+                <div className="text-sm text-slate-400">Pending</div>
+              </div>
+              <div className="bg-amber-900/30 rounded-lg p-3">
+                <div className="text-2xl font-bold text-amber-400">
+                  {[...monitoring.secondaryLegislation, ...monitoring.implementationMilestones].filter(i => i.status === 'inprogress').length}
+                </div>
+                <div className="text-sm text-slate-400">In Progress</div>
+              </div>
+              <div className="bg-emerald-900/30 rounded-lg p-3">
+                <div className="text-2xl font-bold text-emerald-400">
+                  {[...monitoring.secondaryLegislation, ...monitoring.implementationMilestones].filter(i => i.status === 'completed').length}
+                </div>
+                <div className="text-sm text-slate-400">Completed</div>
+              </div>
+              <div className="bg-red-900/30 rounded-lg p-3">
+                <div className="text-2xl font-bold text-red-400">
+                  {[...monitoring.secondaryLegislation, ...monitoring.implementationMilestones].filter(i => i.status === 'delayed').length}
+                </div>
+                <div className="text-sm text-slate-400">Delayed</div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {renderNavButtons()}
+    </>
+  );
 
   const renderAssessmentTab = () => (
     <div className="space-y-6">
@@ -1416,7 +1415,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setAssessment({ ...assessment, intendedOutcomes: e.target.value })}
               placeholder="For each objective, assess:&#10;- Was it achieved? Partially? Not at all?&#10;- What evidence supports this assessment?&#10;- What factors contributed to success or failure?"
               rows={5}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
 
@@ -1432,7 +1431,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setAssessment({ ...assessment, unintendedConsequences: e.target.value })}
               placeholder="Document any:&#10;- Unexpected benefits&#10;- Unexpected harms or burdens&#10;- Loopholes or workarounds that emerged&#10;- Groups affected who weren't considered"
               rows={4}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
 
@@ -1479,7 +1478,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setAssessment({ ...assessment, recommendations: e.target.value })}
               placeholder="Consider:&#10;- Amendments to the primary legislation&#10;- Changes to secondary legislation/regulations&#10;- Improved implementation guidance&#10;- Additional resources needed&#10;- Repeal or sunset provisions"
               rows={5}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
 
@@ -1492,7 +1491,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
               onChange={(e) => setAssessment({ ...assessment, evidenceSources: e.target.value.split('\n').filter(s => s.trim()) })}
               placeholder="List sources that informed this assessment (one per line):&#10;e.g., Agency annual report 2025&#10;Audit office review&#10;Stakeholder consultation responses&#10;Academic study by [Author]"
               rows={4}
-              className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
             />
           </div>
         </div>
