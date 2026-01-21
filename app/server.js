@@ -16,21 +16,31 @@ app.use(express.json({ limit: '10mb' })); // Allow large document texts
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 // System prompt for legislation extraction
-const EXTRACTION_SYSTEM_PROMPT = `You are an expert legislative analyst. Your task is to analyze legislation documents and extract key information in a structured format.
+const EXTRACTION_SYSTEM_PROMPT = `You are an expert legislative analyst specializing in post-legislative scrutiny. Analyze the provided legislation and extract key information for parliamentary review.
 
-When given legislation text, extract and return a JSON object with these fields:
-- legislationTitle: The official name/title of the legislation
-- legislationYear: The year it was enacted (as a string)
-- legislationSummary: A clear, 2-3 sentence summary of what the legislation does and what problem it addresses
-- primaryObjectives: A bullet-point list of the main objectives/goals (use • as bullet character)
-- implementingAgencies: Comma-separated list of government bodies/agencies responsible for implementation
-- suggestedCountry: The country/jurisdiction if identifiable from the text (or empty string if unclear)
-- jurisdictionLevel: One of "national", "regional", "local", or "supranational" based on the legislation scope
-- parliamentType: One of "unicameral", "bicameral", "presidential", or "other" if identifiable (or empty string)
-- keyProvisions: A brief list of the most important provisions or sections
-- reviewClauses: Any sunset clauses, review dates, or reporting requirements mentioned
+IMPORTANT INSTRUCTIONS:
+- DO NOT copy raw text directly from the document
+- SYNTHESIZE and SUMMARIZE information in clear, professional language
+- If information is not clearly stated, make reasonable inferences or leave blank
+- Write objectives and summaries in your own words, not quoted text
 
-Return ONLY valid JSON, no markdown formatting or explanations.`;
+Extract and return a JSON object with these fields:
+
+{
+  "legislationTitle": "The full official title of the Act/Bill",
+  "legislationYear": "Year enacted (e.g., '2023')",
+  "legislationSummary": "Write a clear 2-3 sentence summary explaining: (1) what problem this legislation addresses, (2) what it does to solve it, and (3) who it affects. Do NOT copy definitions or preamble text.",
+  "primaryObjectives": "• First main policy objective\\n• Second main policy objective\\n• Third main policy objective (list 3-5 key goals the legislation aims to achieve, written as clear statements)",
+  "implementingAgencies": "Ministry/Department Name, Agency Name (list the government bodies responsible for implementation)",
+  "suggestedCountry": "Country name if identifiable",
+  "jurisdictionLevel": "national/regional/local/supranational",
+  "parliamentType": "unicameral/bicameral/presidential/other or empty string",
+  "keyProvisions": "• Key provision 1\\n• Key provision 2 (summarize 3-5 most important sections/articles)",
+  "reviewClauses": "Any sunset/review clauses, mandatory reporting requirements, or evaluation timelines"
+}
+
+Return ONLY valid JSON. No markdown code blocks, no explanations.`;
+
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
