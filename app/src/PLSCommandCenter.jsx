@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { extractTextFromDocument, getDocumentInfo } from './services/documentParser';
 import { extractLegislationWithAI, extractLegislationFallback, checkServerHealth } from './services/aiService';
 
@@ -78,6 +78,14 @@ How can I help you today? You can ask me questions or upload a legislative text 
   const [chatInput, setChatInput] = useState('');
   const [isChatLoading, setIsChatLoading] = useState(false);
   const [chatDocumentText, setChatDocumentText] = useState('');
+  const chatContainerRef = useRef(null);
+
+  // Auto-scroll chat to bottom when new messages arrive
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [chatMessages, isChatLoading]);
 
   // Check server status on mount
   useEffect(() => {
@@ -1560,7 +1568,7 @@ How can I help you today? You can ask me questions or upload a legislative text 
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+      <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
         {chatMessages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[80%] rounded-lg p-4 ${msg.role === 'user'
